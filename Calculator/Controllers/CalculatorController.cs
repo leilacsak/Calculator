@@ -9,6 +9,12 @@ namespace Calculator.Controllers
         {
             return View();
         }
+
+        public ActionResult Game()
+        {
+            return RedirectToAction("Index");
+        }
+
         [HttpPost]
         public IActionResult Calculate(CalculatorModel model) {
 
