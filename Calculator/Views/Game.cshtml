@@ -1,5 +1,24 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@model CalculatorModel
+
+@using (Html.BeginForm("Calculate", "Home", FormMethod.Post))
+{
+    @Html.ValidationSummary(true)
+    <div>
+        @Html.LabelFor(model => model.Operandus1)
+        @Html.TextBoxFor(model => model.Operandus1)
+        @Html.ValidationMessageFor(model => model.Operandus1)
+    </div>
+    <div>
+        @Html.LabelFor(model => model.Operandus2)
+        @Html.TextBoxFor(model => model.Operandus2)
+        @Html.ValidationMessageFor(model => model.Operandus2)
+    </div>
+    <div>
+        @Html.LabelFor(model => model.Operator)
+        @Html.DropDownListFor(model => model.Operator, new SelectList(new[] { "+", "-", "*", "/" }))
+        @Html.ValidationMessageFor(model => model.Operator)
+    </div>
+    <input type="submit" value="Calculate" />
 }
+
+
