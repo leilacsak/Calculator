@@ -1,6 +1,6 @@
 ﻿@model CalculatorModel
 @using Microsoft.AspNetCore.Mvc.Rendering
-@using (Html.BeginForm("Calculate", "CalculatorController", FormMethod.Post))
+@using (Html.BeginForm("Calculate", "Calculator", FormMethod.Post))
 {
     @Html.ValidationSummary(true)
         <p>Enter numbers into the fields, select an operator from the list, then click the Calculate button for the result:</p>

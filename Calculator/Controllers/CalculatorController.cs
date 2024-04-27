@@ -10,9 +10,9 @@ namespace Calculator.Controllers
             return View();
         }
 
-        public ActionResult Game()
+        public ActionResult Game(CalculatorModel model)
         { 
-            return View("Game");
+            return View(model);
         }
         
 
