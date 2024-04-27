@@ -11,7 +11,7 @@ namespace Calculator.Controllers
         }
 
         public ActionResult Game()
-        {
+        { 
             return View("Game");
         }
         
@@ -20,11 +20,11 @@ namespace Calculator.Controllers
         public IActionResult Calculate(CalculatorModel model) {
 
             if (!ModelState.IsValid)
-                return View("Index", model);
+                return View("Game", model);
 
             double result = PerformCalculation(model);
-            ViewBag.Result = result;
-            return View("Index", model);
+            model.Result = result;
+            return View("Game", model);
         }
 
         private double PerformCalculation(CalculatorModel model)
