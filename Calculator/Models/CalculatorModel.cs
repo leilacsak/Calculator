@@ -13,7 +13,6 @@ namespace Calculator.Models
         [RegularExpression(@"^\d+(\.\d+)?$", ErrorMessage = "Your input must be a number")]
         public double Operandus2 { get;set; }
 
-        [Required(ErrorMessage = "Selecting an operator is required")]
         public String? Operator { get; set; }
         public double Result { get; set; }
     }

@@ -20,19 +20,51 @@
                 </div>
           
         </div>
-    <div class="row mt-3">
-        <div class="col-md-12 text-center">
-            <input type="submit" value="Calculate" class="btn btn-primary" />
+        <div class="row mt-3">
+            <div class="col-md-12 text-center">
+                <input type="submit" value="Calculate" class="btn btn-primary" />
+            </div>
         </div>
-    </div>
-
-    if (Model != null)
-    {
+    
         <div class="row mt-3">
             <div class="col-md-12 text-center">
                 <label for="result">Result:</label>
                 <input type="text" id="result" name="result" value="@Model.Result" disabled class="form-control" />
             </div>
         </div>
-    }   
+    
+
+        <div id="errorModal" class="modal fade" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Error</h5>
+                    </div>
+                    <div class="modal-body">
+                        @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+                        {
+                            <p>@error.ErrorMessage</p>
+                        }
+                    </div>
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="errorModalOKBtn" data-dismiss="modal">OK</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 }
+
+
+<script>
+    $(document).ready(function () {
+    @if (!ViewData.ModelState.IsValid)
+    {
+        @:$('#errorModal').modal('show');
+    }
+        });
+
+          $('#errorModalOKBtn').click(function () {
+            $('#errorModal').modal('hide');
+        });
+</script>
+    

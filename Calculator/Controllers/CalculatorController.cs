@@ -29,21 +29,15 @@ namespace Calculator.Controllers
 
         private double PerformCalculation(CalculatorModel model)
         {
-            switch (model.Operator)
+            return model.Operator switch
             {
-                case "+":
-                    return model.Operandus1 + model.Operandus2;
-                case "-":
-                    return model.Operandus1 - model.Operandus2;
-                case "*":
-                    return model.Operandus1 * model.Operandus2;
-                case "/":
-                    return model.Operandus1 / model.Operandus2;
-                case "%":
-                    return model.Operandus1 % model.Operandus2;
-                default:
-                    throw new ArgumentException("Invalid operator!");
-            }
+                "+" => model.Operandus1 + model.Operandus2,
+                "-" => model.Operandus1 - model.Operandus2,
+                "*" => model.Operandus1 * model.Operandus2,
+                "/" => model.Operandus1 / model.Operandus2,
+                "%" => model.Operandus1 % model.Operandus2,
+                _ => throw new ArgumentException("Invalid operator!"),
+            };
         }
     }
 }
