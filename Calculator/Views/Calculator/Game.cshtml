@@ -11,7 +11,7 @@
                     @Html.ValidationMessageFor(model => model.Operandus1)
                 </div>
         <div class="col-md-4 d-flex justify-content-center align-items-center ">
-                    @Html.DropDownListFor(model => model.Operator, new SelectList(new[] { "+", "-", "*", "/" }))
+                    @Html.DropDownListFor(model => model.Operator, new SelectList(new[] { "+", "-", "*", "/" , "%"}))
                     @Html.ValidationMessageFor(model => model.Operator)
                 </div>
         <div class="col-md-4 d-flex justify-content-center align-items-center">

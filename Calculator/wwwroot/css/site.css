@@ -32,3 +32,17 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+input[type="text"] {
+    border-radius: 5px; 
+}
+
+select {
+    border-radius: 5px;
+}
+
+body {
+    background-image: url('https://w0.peakpx.com/wallpaper/204/782/HD-wallpaper-tulip-tree-tree-bokeh-flowers-pastel-spring-delicate-linodendron-pink.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
