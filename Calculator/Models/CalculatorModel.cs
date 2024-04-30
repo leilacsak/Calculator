@@ -5,12 +5,12 @@ namespace Calculator.Models
 {
     public class CalculatorModel
     {
-        [Required(ErrorMessage = "Number is required")]
-        [RegularExpression(@"^\d+(\.\d+)?$", ErrorMessage = "Your input must be a number")]
+        [Required]
+        [RegularExpression(@"^\d+(\.\d+)?$")]
         public double Operandus1 { get; set; }
 
-        [Required(ErrorMessage = "Number is required")]
-        [RegularExpression(@"^\d+(\.\d+)?$", ErrorMessage = "Your input must be a number")]
+        [Required]
+        [RegularExpression(@"^\d+(\.\d+)?$")]
         public double Operandus2 { get;set; }
 
         public String? Operator { get; set; }
