@@ -8,7 +8,7 @@
 
         <div class="col-md-4 d-flex justify-content-center align-items-center">
                     @Html.TextBoxFor(model => model.Operandus1)
-                    @Html.ValidationMessageFor(model => model.Operandus1)
+                   
                 </div>
         <div class="col-md-4 d-flex justify-content-center align-items-center ">
                     @Html.DropDownListFor(model => model.Operator, new SelectList(new[] { "+", "-", "*", "/" , "%"}))
@@ -16,7 +16,7 @@
                 </div>
         <div class="col-md-4 d-flex justify-content-center align-items-center">
                     @Html.TextBoxFor(model => model.Operandus2)
-                    @Html.ValidationMessageFor(model => model.Operandus2)
+                   
                 </div>
           
         </div>
@@ -56,15 +56,45 @@
 
 
 <script>
-    $(document).ready(function () {
-    @if (!ViewData.ModelState.IsValid)
-    {
-        @:$('#errorModal').modal('show');
-    }
-        });
+   
+        $(document).ready(function () {
+            $('form').submit(function (event) {
+                event.preventDefault(); 
 
-          $('#errorModalOKBtn').click(function () {
+                var formData = $(this).serialize();
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("ValidateForm", "Calculator")', 
+                    data: formData,
+                    success: function (response) {
+                        if (response.success) {
+
+                         $('form').unbind('submit').submit();
+                           
+                        } else {
+
+                        var errorMessages = response.errors.join('<br>');
+                        $('.modal-body').html(errorMessages);
+                        $('#errorModal').modal('show');
+                        }
+                    },
+                    error: function () {
+                        
+                        $('.modal-body').html('An error occurred.');
+                        $('#errorModal').modal('show');
+                    }
+                });
+            });
+        $('#errorModalOKBtn').click(function () {
             $('#errorModal').modal('hide');
         });
+    });
+        
 </script>
+
+
+
+
+
+
     

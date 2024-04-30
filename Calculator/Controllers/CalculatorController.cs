@@ -39,5 +39,19 @@ namespace Calculator.Controllers
                 _ => throw new ArgumentException("Invalid operator!"),
             };
         }
+
+        [HttpPost]
+        public IActionResult ValidateForm(CalculatorModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                var errors = ModelState.Values.SelectMany(v => v.Errors)
+                                              .Select(e => e.ErrorMessage)
+                                              .ToList();
+                return Json(new { success = false, errors });
+            }
+
+            return Json(new { success = true });
+        }
     }
 }
